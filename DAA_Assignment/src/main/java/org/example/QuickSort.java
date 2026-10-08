@@ -71,7 +71,7 @@ public class QuickSort {
 
     private static void insertionSort(int[] a, int left, int right, Metrics metrics) {
         for (int i = left + 1; i <= right; i++) {
-            int key = a[i]; // Исправлено на a[i]
+            int key = a[i]; 
             int j = i - 1;
             while (j >= left) {
                 metrics.incrementComparisons();
