@@ -12,7 +12,6 @@ public class BenchmarkRunner {
         String csvFile = "results.csv";
 
         try (PrintWriter pw = new PrintWriter(new FileWriter(csvFile))) {
-            // Заголовок CSV файла
             pw.println("Algorithm,Size,DataType,TimeMs,Comparisons,MaxRecursionDepth");
 
             Random random = new Random();
@@ -21,18 +20,12 @@ public class BenchmarkRunner {
                 int[] randomArray = random.ints(size, -100000, 100000).toArray();
                 int[] sortedArray = randomArray.clone();
                 java.util.Arrays.sort(sortedArray);
-
-                // --- 1. MergeSort на случайных данных ---
                 runMergeSortBenchmark(pw, randomArray, size, "Random");
-                // --- 2. MergeSort на отсортированных данных ---
                 runMergeSortBenchmark(pw, sortedArray, size, "Sorted");
 
-                // --- 3. QuickSort на случайных данных ---
                 runQuickSortBenchmark(pw, randomArray, size, "Random");
-                // --- 4. QuickSort на отсортированных данных ---
                 runQuickSortBenchmark(pw, sortedArray, size, "Sorted");
 
-                // --- 5. QuickSelect на случайных данных (ищем медиану size / 2) ---
                 runQuickSelectBenchmark(pw, randomArray, size, "Random");
             }
 
@@ -70,7 +63,7 @@ public class BenchmarkRunner {
     private static void runQuickSelectBenchmark(PrintWriter pw, int[] original, int size, String dataType) {
         int[] data = original.clone();
         Metrics metrics = new Metrics();
-        int k = size / 2; // ищем средний элемент
+        int k = size / 2; 
 
         long startTime = System.nanoTime();
         QuickSelect.select(data, k, metrics);
