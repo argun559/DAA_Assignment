@@ -8,13 +8,13 @@ public class MergeSort {
         if (a == null || a.length <= 1) {
             return;
         }
-        // Создаем буфер один раз на верхнем уровне рекурсии
+       
         int[] buffer = new int[a.length];
         sort(a, 0, a.length - 1, buffer, metrics);
     }
 
     private static void sort(int[] a, int left, int right, int[] buffer, Metrics metrics) {
-        // Условие порога (Cutoff): если размер <= 15, сортируем вставками
+     
         if (right - left <= INSERTION_SORT_THRESHOLD) {
             insertionSort(a, left, right, metrics);
             return;
@@ -32,7 +32,7 @@ public class MergeSort {
     }
 
     private static void merge(int[] a, int left, int mid, int right, int[] buffer, Metrics metrics) {
-        // Копируем элементы во вспомогательный буфер
+ 
         for (int i = left; i <= right; i++) {
             buffer[i] = a[i];
         }
